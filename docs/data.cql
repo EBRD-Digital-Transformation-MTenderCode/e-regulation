@@ -1,24 +1,16 @@
 CREATE KEYSPACE IF NOT EXISTS ocds WITH replication = {'class':'SimpleStrategy', 'replication_factor':1};
 
-CREATE TABLE IF NOT EXISTS  ocds.budget_ei (
+CREATE TABLE IF NOT EXISTS  ocds.regulation_data (
     cp_id text,
-    token_entity uuid,
-    owner text,
-    created_date timestamp,
     json_data text,
-    primary key(cp_id, token_entity)
+    primary key(cp_id)
 );
 
-CREATE TABLE IF NOT EXISTS  ocds.budget_fs (
-    cp_id text,
-    oc_id text,
-    token_entity uuid,
-    owner text,
-    amount decimal,
-    amount_reserved decimal,
+CREATE TABLE IF NOT EXISTS  ocds.regulation_rules (
     created_date timestamp,
-    json_data text,
-    primary key(cp_id, oc_id, token_entity)
+    status text,
+    stage text,
+    primary key(created_date, status, stage)
 );
 
 
@@ -27,3 +19,5 @@ SELECT * FROM ocds.budget_fs;
 
 TRUNCATE ocds.budget_fs;
 TRUNCATE ocds.budget_ei;
+
+

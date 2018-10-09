@@ -15,6 +15,7 @@ class MainServiceImpl(private val mainDao: MainDao,
                       private val generationService: GenerationService) : MainService {
 
     override fun getTerms(cm: CommandMessage): ResponseDto {
-        TODO()
+//        mainDao.testsave()
+        return ResponseDto(data = "{}")
     }
 }

@@ -32,6 +32,10 @@ fun localNowUTC(): LocalDateTime {
     return LocalDateTime.ofInstant(Instant.now(), ZoneOffset.UTC)
 }
 
+fun nowUTC(): Date {
+    return localNowUTC().toDate()
+}
+
 fun milliNowUTC(): Long {
     return localNowUTC().toInstant(ZoneOffset.UTC).toEpochMilli()
 }
