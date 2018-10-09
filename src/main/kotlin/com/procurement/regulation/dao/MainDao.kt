@@ -12,8 +12,6 @@ import java.util.*
 
 interface MainDao {
 
-    fun testsave()
-
     fun save(entity: Entity)
 
     fun getByCpIdAndToken(cpId: String, token: UUID): Entity?
@@ -24,19 +22,6 @@ interface MainDao {
 
 @Service
 class MainDaoImpl(private val session: Session) : MainDao {
-
-    override fun testsave() {
-        val insert1 = insertInto("regulation_data")
-                .value(CP_ID, UUIDs.random().toString())
-                .value(JSON_DATA, "{}")
-        val insert2 = insertInto("regulation_rules")
-                .value(CREATED_DATE, nowUTC())
-                .value("status", "active")
-                .value("stage", "EV")
-
-        val batch = QueryBuilder.batch(insert1, insert2)
-        session.execute(batch)
-    }
 
     override fun save(entity: Entity) {
         val insert = insertInto(EI_TABLE)
