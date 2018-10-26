@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonInclude
 
 
-data class ContractTerms @JsonCreator constructor(
+data class ContractTerm @JsonCreator constructor(
 
         val id: String,
 
@@ -14,7 +14,7 @@ data class ContractTerms @JsonCreator constructor(
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class AgreedMetric @JsonCreator constructor(
 
-        val id: String,
+        var id: String,
 
         val title: String,
 

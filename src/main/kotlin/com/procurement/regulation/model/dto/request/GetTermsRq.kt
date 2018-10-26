@@ -1,6 +1,7 @@
 package com.procurement.regulation.model.dto.request
 
 import com.fasterxml.jackson.annotation.JsonCreator
+import com.procurement.regulation.model.dto.bpe.templates.ContractTerm
 import com.procurement.regulation.model.dto.ocds.Award
 import com.procurement.regulation.model.dto.ocds.Contract
 
@@ -16,4 +17,10 @@ data class GetTermsRq @JsonCreator constructor(
 data class CreateContractTender @JsonCreator constructor(
 
         val mainProcurementCategory: String
+)
+
+
+data class GetTermsRs @JsonCreator constructor(
+
+        val contractTerms: Set<ContractTerm>
 )
