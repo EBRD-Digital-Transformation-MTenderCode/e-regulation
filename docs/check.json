@@ -1,4 +1,20 @@
 {
-  "id": "",
-  "isEuropeanUnionFunded": 1
+  "id": "0819b1fe-9a5a-4c81-b5f5-f377caec1238",
+  "command": "getTerms",
+  "context": {
+    "operationId": "0819b1fe-9a5a-4c81-b5f5-f377caec1238",
+    "requestId": "196d6150-d77e-11e8-b455-b54719027762",
+    "stage": "EI",
+    "processType": "getTerms",
+    "operationType": "getTerms",
+    "owner": "445f6851-c908-407d-9b45-14b92f3e964b",
+    "country": "MD",
+    "pmd": "OT",
+    "language": "en",
+    "startDate": "2018-10-24T11:15:22Z",
+    "timeStamp": 1540379722725729,
+    "isAuction": false
+  },
+  "data": {},
+  "version": "0.0.1"
 }

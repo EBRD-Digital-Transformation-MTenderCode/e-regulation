@@ -22,6 +22,7 @@ class CommandController(private val mainService: MainService) {
     fun execute(cm: CommandMessage): ResponseDto {
         return when (cm.command) {
             CommandType.GET_TERMS -> mainService.getTerms(cm)
+            CommandType.UPDATE_TERMS -> mainService.getTerms(cm)
         }
     }
 

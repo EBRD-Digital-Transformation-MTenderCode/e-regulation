@@ -1,20 +1,25 @@
 package com.procurement.regulation.service
 
-import com.procurement.regulation.dao.MainDao
+import com.procurement.regulation.dao.DataDao
+import com.procurement.regulation.exception.ErrorException
+import com.procurement.regulation.exception.ErrorType
 import com.procurement.regulation.model.dto.bpe.CommandMessage
 import com.procurement.regulation.model.dto.bpe.ResponseDto
+import com.procurement.regulation.model.dto.bpe.templates.ContractTerms
 import org.springframework.stereotype.Service
 
-interface MainService {
-
-    fun getTerms(cm: CommandMessage): ResponseDto
-}
-
 @Service
-class MainServiceImpl(private val mainDao: MainDao,
-                      private val generationService: GenerationService) : MainService {
+class MainService(private val templateService: TemplateService,
+                      private val dataDao: DataDao,
+                      private val generationService: GenerationService) {
 
-    override fun getTerms(cm: CommandMessage): ResponseDto {
-        return ResponseDto(data = "{}")
+    fun getTerms(cm: CommandMessage): ResponseDto {
+        val country = cm.context.country ?: throw ErrorException(ErrorType.CONTEXT)
+        val pmd = cm.context.pmd ?: throw ErrorException(ErrorType.CONTEXT)
+        val language = cm.context.language ?: throw ErrorException(ErrorType.CONTEXT)
+//        val dto = toObject(GetTermsRq::class.java, cm.data)
+        val staticMetrics = templateService.getStaticMetrics(country, pmd, language, "services")
+        val dynamicMetrics = templateService.getDynamicMetrics(country, pmd, language, "services")
+        return ResponseDto(data = ContractTerms(id = "", agreedMetrics = staticMetrics + dynamicMetrics))
     }
 }

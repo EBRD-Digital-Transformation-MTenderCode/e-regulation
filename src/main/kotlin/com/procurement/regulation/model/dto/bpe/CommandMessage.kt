@@ -33,12 +33,13 @@ data class Context @JsonCreator constructor(
         val token: String?,
         val startDate: String?,
         val endDate: String?,
-        val bidId: String?
+        val id: String?
 )
 
 enum class CommandType(private val value: String) {
 
-    GET_TERMS("getTerms");
+    GET_TERMS("getTerms"),
+    UPDATE_TERMS("updateTerms");
 
     @JsonValue
     fun value(): String {

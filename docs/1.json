@@ -1,0 +1,27 @@
+{
+  "id": "cc-subject",
+  "title": "item.description: subject specification",
+  "description": "Description of procured items of subject of contracting process",
+  "observations": [
+    {
+      "id": "cc-subject-1",
+      "notes": "Item model"
+    },
+    {
+      "id": "cc-subject-2",
+      "notes": "Country of origin"
+    },
+    {
+      "id": "cc-subject-3",
+      "notes": "Producer"
+    },
+    {
+      "id": "cc-subject-4",
+      "notes": "Tech specification"
+    },
+    {
+      "id": "cc-subject-5",
+      "notes": "Reference standards"
+    }
+  ]
+}
