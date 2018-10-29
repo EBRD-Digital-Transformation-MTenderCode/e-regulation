@@ -31,10 +31,14 @@ class TermsService(private val templateService: TemplateService,
         for (contract in dto.contracts) {
             val award = dto.awards.asSequence().firstOrNull { it.id == contract.awardId }
                     ?: throw ErrorException(ErrorType.AWARD_NOT_FOUND)
-            for (dynamicMetric in dynamicMetrics) {
-                for (item in award.items)
-                    dynamicMetric.id = dynamicMetric.id + award.id + item.id
+            val items = award.items
+            if (items != null && items.isNotEmpty()) {
+                for (dynamicMetric in dynamicMetrics) {
+                    for (item in items)
+                        dynamicMetric.id = dynamicMetric.id + award.id + item.id
+                }
             }
+
             contractTerms.add(ContractTerm(id = contract.id, agreedMetrics = staticMetrics + dynamicMetrics))
             entities.add(TermsEntity(contract.id, toJson(contractTerms)))
         }
