@@ -9,16 +9,8 @@ data class GetTermsRq @JsonCreator constructor(
 
         val awards: Set<Award>,
 
-        val contracts: Set<Contract>,
-
-        val tender: CreateContractTender
+        val contracts: Set<Contract>
 )
-
-data class CreateContractTender @JsonCreator constructor(
-
-        val mainProcurementCategory: String
-)
-
 
 data class GetTermsRs @JsonCreator constructor(
 
