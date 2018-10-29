@@ -21,10 +21,11 @@ class TermsService(private val templateService: TemplateService,
         val country = cm.context.country ?: throw ErrorException(ErrorType.CONTEXT)
         val pmd = cm.context.pmd ?: throw ErrorException(ErrorType.CONTEXT)
         val language = cm.context.language ?: throw ErrorException(ErrorType.CONTEXT)
+        val mainProcurementCategory = cm.context.mainProcurementCategory ?: throw ErrorException(ErrorType.CONTEXT)
         val dto = toObject(GetTermsRq::class.java, cm.data)
 
-        val staticMetrics = templateService.getStaticMetrics(country, pmd, language, dto.tender.mainProcurementCategory)
-        val dynamicMetrics = templateService.getDynamicMetrics(country, pmd, language, dto.tender.mainProcurementCategory)
+        val staticMetrics = templateService.getStaticMetrics(country, pmd, language, mainProcurementCategory)
+        val dynamicMetrics = templateService.getDynamicMetrics(country, pmd, language, mainProcurementCategory)
         val contractTerms = mutableSetOf<ContractTerm>()
         val entities = mutableListOf<TermsEntity>()
         for (contract in dto.contracts) {
