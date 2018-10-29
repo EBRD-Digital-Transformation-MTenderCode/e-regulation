@@ -26,7 +26,7 @@ class TemplateDao(private val session: Session) {
     }
 
 
-    fun getTemplates(country: String, pmd: String, language: String, templateIds: Set<String>): Set<String> {
+    fun getTemplates(country: String, pmd: String, language: String, templateIds: Set<String>): List<String> {
         val query = select()
                 .all()
                 .from(TABLE)
@@ -44,7 +44,7 @@ class TemplateDao(private val session: Session) {
                     row.getString(TEMPLATE_ID),
                     row.getString(TEMPLATE)))
         }
-        return entities.asSequence().map { it.template }.toSet()
+        return entities.asSequence().map { it.template }.toList()
     }
 
     companion object {
