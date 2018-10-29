@@ -3,7 +3,7 @@ package com.procurement.regulation.controller
 import com.procurement.regulation.exception.EnumException
 import com.procurement.regulation.exception.ErrorException
 import com.procurement.regulation.model.dto.bpe.*
-import com.procurement.regulation.service.MainService
+import com.procurement.regulation.service.TermsService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.annotation.Validated
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*
 @Validated
 @RestController
 @RequestMapping("/command")
-class CommandController(private val mainService: MainService) {
+class CommandController(private val termsService: TermsService) {
 
     @PostMapping
     fun command(@RequestBody commandMessage: CommandMessage): ResponseEntity<ResponseDto> {
@@ -21,8 +21,8 @@ class CommandController(private val mainService: MainService) {
 
     fun execute(cm: CommandMessage): ResponseDto {
         return when (cm.command) {
-            CommandType.GET_TERMS -> mainService.getTerms(cm)
-            CommandType.UPDATE_TERMS -> mainService.getTerms(cm)
+            CommandType.GET_TERMS -> termsService.getTerms(cm)
+            CommandType.UPDATE_TERMS -> termsService.getTerms(cm)
         }
     }
 

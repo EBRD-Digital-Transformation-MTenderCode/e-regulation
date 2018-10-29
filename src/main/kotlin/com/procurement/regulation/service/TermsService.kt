@@ -14,8 +14,8 @@ import com.procurement.regulation.utils.toObject
 import org.springframework.stereotype.Service
 
 @Service
-class MainService(private val templateService: TemplateService,
-                  private val dataDao: DataDao) {
+class TermsService(private val templateService: TemplateService,
+                   private val dataDao: DataDao) {
 
     fun getTerms(cm: CommandMessage): ResponseDto {
         val country = cm.context.country ?: throw ErrorException(ErrorType.CONTEXT)
