@@ -1,6 +1,6 @@
 package com.procurement.regulation.model.entity
 
-data class DataEntity(
+data class TermsEntity(
 
         var contractId: String,
 

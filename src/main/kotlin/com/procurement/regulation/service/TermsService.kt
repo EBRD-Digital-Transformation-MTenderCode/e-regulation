@@ -1,6 +1,6 @@
 package com.procurement.regulation.service
 
-import com.procurement.regulation.dao.DataDao
+import com.procurement.regulation.dao.TermsDao
 import com.procurement.regulation.exception.ErrorException
 import com.procurement.regulation.exception.ErrorType
 import com.procurement.regulation.model.dto.bpe.CommandMessage
@@ -8,14 +8,14 @@ import com.procurement.regulation.model.dto.bpe.ResponseDto
 import com.procurement.regulation.model.dto.bpe.templates.ContractTerm
 import com.procurement.regulation.model.dto.request.GetTermsRq
 import com.procurement.regulation.model.dto.request.GetTermsRs
-import com.procurement.regulation.model.entity.DataEntity
+import com.procurement.regulation.model.entity.TermsEntity
 import com.procurement.regulation.utils.toJson
 import com.procurement.regulation.utils.toObject
 import org.springframework.stereotype.Service
 
 @Service
 class TermsService(private val templateService: TemplateService,
-                   private val dataDao: DataDao) {
+                   private val termsDao: TermsDao) {
 
     fun getTerms(cm: CommandMessage): ResponseDto {
         val country = cm.context.country ?: throw ErrorException(ErrorType.CONTEXT)
@@ -26,6 +26,7 @@ class TermsService(private val templateService: TemplateService,
         val staticMetrics = templateService.getStaticMetrics(country, pmd, language, dto.tender.mainProcurementCategory)
         val dynamicMetrics = templateService.getDynamicMetrics(country, pmd, language, dto.tender.mainProcurementCategory)
         val contractTerms = mutableSetOf<ContractTerm>()
+        val entities = mutableListOf<TermsEntity>()
         for (contract in dto.contracts) {
             val award = dto.awards.asSequence().firstOrNull { it.id == contract.awardId }
                     ?: throw ErrorException(ErrorType.AWARD_NOT_FOUND)
@@ -34,10 +35,9 @@ class TermsService(private val templateService: TemplateService,
                     dynamicMetric.id = dynamicMetric.id + award.id + item.id
             }
             contractTerms.add(ContractTerm(id = contract.id, agreedMetrics = staticMetrics + dynamicMetrics))
-            val dataEntity = DataEntity(contract.id, toJson(contractTerms))
-            dataDao.save(dataEntity)
+            entities.add(TermsEntity(contract.id, toJson(contractTerms)))
         }
-
+        termsDao.saveAll(entities)
         return ResponseDto(data = GetTermsRs(contractTerms))
     }
 }
