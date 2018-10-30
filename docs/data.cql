@@ -24,17 +24,17 @@ CREATE TABLE IF NOT EXISTS  ocds.regulation_templates (
 );
 
 INSERT INTO regulation_rules (country,pmd,parameter,value) VALUES ('MD','OT','goods_dynamic','{ "templateIds": ["cc-subject"] }');
-INSERT INTO regulation_rules (country,pmd,parameter,value) VALUES ('MD','OT','goods_static','{ "templateIds": ["cc-general", "cc-tenderer-1", "cc-tenderer-2", "cc-tenderer-3, "cc-buyer-1", "cc-buyer-2"] }');
+INSERT INTO regulation_rules (country,pmd,parameter,value) VALUES ('MD','OT','goods_static','{ "templateIds": ["cc-general", "cc-tenderer-1", "cc-tenderer-2", "cc-tenderer-3", "cc-buyer-1", "cc-buyer-2"] }');
 INSERT INTO regulation_rules (country,pmd,parameter,value) VALUES ('MD','TEST_OT','goods_dynamic','{ "templateIds": ["cc-subject"] }');
-INSERT INTO regulation_rules (country,pmd,parameter,value) VALUES ('MD','TEST_OT','goods_static','{ "templateIds": ["cc-general", "cc-tenderer-1", "cc-tenderer-2", "cc-tenderer-3, "cc-buyer-1", "cc-buyer-2"] }');
+INSERT INTO regulation_rules (country,pmd,parameter,value) VALUES ('MD','TEST_OT','goods_static','{ "templateIds": ["cc-general", "cc-tenderer-1", "cc-tenderer-2", "cc-tenderer-3", "cc-buyer-1", "cc-buyer-2"] }');
 
 INSERT INTO regulation_rules (country,pmd,parameter,value) VALUES ('MD','OT','services_dynamic','{ "templateIds": ["cc-subject"] }');
-INSERT INTO regulation_rules (country,pmd,parameter,value) VALUES ('MD','OT','services_static','{ "templateIds": ["cc-general", "cc-tenderer-1", "cc-tenderer-2", "cc-tenderer-3, "cc-buyer-1", "cc-buyer-2"] }');
+INSERT INTO regulation_rules (country,pmd,parameter,value) VALUES ('MD','OT','services_static','{ "templateIds": ["cc-general", "cc-tenderer-1", "cc-tenderer-2", "cc-tenderer-3", "cc-buyer-1", "cc-buyer-2"] }');
 INSERT INTO regulation_rules (country,pmd,parameter,value) VALUES ('MD','TEST_OT','services_dynamic','{ "templateIds": ["cc-subject"] }');
-INSERT INTO regulation_rules (country,pmd,parameter,value) VALUES ('MD','TEST_OT','services_static','{ "templateIds": ["cc-general", "cc-tenderer-1", "cc-tenderer-2", "cc-tenderer-3, "cc-buyer-1", "cc-buyer-2"] }');
+INSERT INTO regulation_rules (country,pmd,parameter,value) VALUES ('MD','TEST_OT','services_static','{ "templateIds": ["cc-general", "cc-tenderer-1", "cc-tenderer-2", "cc-tenderer-3", "cc-buyer-1", "cc-buyer-2"] }');
 
-INSERT INTO regulation_rules (country,pmd,parameter,value) VALUES ('MD','OT','works_static','{ "templateIds": ["cc-tenderer-1", "cc-tenderer-2", "cc-tenderer-3, "works-cc-buyer-1", "works-cc-buyer-2"] }');
-INSERT INTO regulation_rules (country,pmd,parameter,value) VALUES ('MD','TEST_OT','works_static','{ "templateIds": ["cc-tenderer-1", "cc-tenderer-2", "cc-tenderer-3, "works-cc-buyer-1", "works-cc-buyer-2"] }');
+INSERT INTO regulation_rules (country,pmd,parameter,value) VALUES ('MD','OT','works_static','{ "templateIds": ["cc-tenderer-1", "cc-tenderer-2", "cc-tenderer-3", "works-cc-buyer-1", "works-cc-buyer-2"] }');
+INSERT INTO regulation_rules (country,pmd,parameter,value) VALUES ('MD','TEST_OT','works_static','{ "templateIds": ["cc-tenderer-1", "cc-tenderer-2", "cc-tenderer-3", "works-cc-buyer-1", "works-cc-buyer-2"] }');
 
 INSERT INTO regulation_templates (country,pmd,language,template_id,template) VALUES ('MD','OT','ro','cc-subject','{"id": "cc-subject","title": "item.description: subject specification","description": "Description of procured items of subject of contracting process","observations": [{"id": "cc-subject-1","notes": "Item model"},{"id": "cc-subject-2","notes": "Country of origin"},{"id": "cc-subject-3","notes": "Producer"},{"id": "cc-subject-4","notes": "Tech specification"},{"id": "cc-subject-5","notes": "Reference standards"}]}');
 INSERT INTO regulation_templates (country,pmd,language,template_id,template) VALUES ('MD','OT','ro','cc-general','{"id": "cc-general", "title": "General Responsibilities", "description": "Contract conditions governing the general responsibilities related to both: CA and EO","observations": [{"id": "cc-general-1-1","notes": "Maximum days to inform on invoking Force Majeure","unit": {"name": "day","id": "359","scheme": "MD-CUMC"}},{"id": "cc-general-1-2","notes": "Maximum days to inform on termination intention","unit": {"name": "day","id": "359","scheme": "MD-CUMC"}},{"id": "cc-general-1-3","notes": "Maximum days to respond on termination intention","unit": {"name": "day","id": "359","scheme": "MD-CUMC"}}]}');
