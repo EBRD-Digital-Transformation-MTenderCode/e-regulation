@@ -70,14 +70,7 @@ class TemplateService(private val rulesService: RulesService,
                 return metrics
             }
             MainProcurementCategory.WORKS -> {
-                val rule = rulesService.getRule(country, pmd, WORKS_DYNAMIC)
-                val templateRule = toObject(TemplateRule::class.java, rule)
-                val templates = templateDao.getTemplates(country, pmd, language, templateRule.templateIds)
-                val metrics = mutableListOf<AgreedMetric>()
-                templates.forEach { template ->
-                    metrics.add(toObject(AgreedMetric::class.java, template))
-                }
-                return metrics
+                return mutableListOf()
             }
         }
 
@@ -89,6 +82,5 @@ class TemplateService(private val rulesService: RulesService,
         private const val SERVICES_STATIC = "services_static"
         private const val SERVICES_DYNAMIC = "services_dynamic"
         private const val WORKS_STATIC = "works_static"
-        private const val WORKS_DYNAMIC = "works_dynamic"
     }
 }
