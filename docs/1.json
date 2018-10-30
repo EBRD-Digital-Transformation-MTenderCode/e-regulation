@@ -1,27 +1,70 @@
 {
-  "id": "cc-subject",
-  "title": "item.description: subject specification",
-  "description": "Description of procured items of subject of contracting process",
+  "id": "cc-tenderer-2",
+  "title": "Periods",
+  "description": "Contract conditions governing the general responsibilities related to EO regarding timing",
   "observations": [
     {
-      "id": "cc-subject-1",
-      "notes": "Item model"
+      "id": "cc-tenderer-2-1",
+      "notes": "Maximum days from the signing of the contract to Buyer's announcement of the availability on delivery of the Goods and/or the provision of the Services",
+      "unit": {
+        "name": "days",
+        "id": "359",
+        "scheme": "MD-CUMC"
+      }
     },
     {
-      "id": "cc-subject-2",
-      "notes": "Country of origin"
+      "id": "cc-tenderer-2-2",
+      "notes": "Maximum days to respond to claims on quality of delivered goods and/or services",
+      "unit": {
+        "name": "days",
+        "id": "359",
+        "scheme": "MD-CUMC"
+      }
     },
     {
-      "id": "cc-subject-3",
-      "notes": "Producer"
+      "id": "cc-tenderer-2-3",
+      "notes": "Maximum days to additional delivery related to quality claims",
+      "unit": {
+        "name": "day",
+        "id": "359",
+        "scheme": "MD-CUMC"
+      }
     },
     {
-      "id": "cc-subject-4",
-      "notes": "Tech specification"
+      "id": "cc-tenderer-2-4",
+      "notes": "Period after which it is considered a refuse of execute the contrac",
+      "unit": {
+        "name": "day",
+        "id": "359",
+        "scheme": "MD-CUMC"
+      }
     },
     {
-      "id": "cc-subject-5",
-      "notes": "Reference standards"
+      "id": "cc-tenderer-2-5",
+      "notes": "Warranty Period for Executed Worksr",
+      "unit": {
+        "name": "month",
+        "id": "362",
+        "scheme": "MD-CUMC"
+      }
+    },
+    {
+      "id": "cc-tenderer-2-6",
+      "notes": "Maximum days from the signing and registration of the contract when the works will start",
+      "unit": {
+        "name": "days",
+        "id": "359",
+        "scheme": "MD-CUMC"
+      }
+    },
+    {
+      "id": "cc-tenderer-2-7",
+      "notes": "Works execution duration from date signed",
+      "unit": {
+        "name": "days",
+        "id": "359",
+        "scheme": "MD-CUMC"
+      }
     }
   ]
 }
