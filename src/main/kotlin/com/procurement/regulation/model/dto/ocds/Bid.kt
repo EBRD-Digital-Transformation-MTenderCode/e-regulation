@@ -7,7 +7,7 @@ import java.time.LocalDateTime
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class Bid @JsonCreator constructor(
 
-        val id: String,
+        val id: String?,
 
         val date: LocalDateTime?,
 
@@ -15,9 +15,9 @@ data class Bid @JsonCreator constructor(
 
         val createdDate: LocalDateTime?,
 
-        var value: Value,
+        var value: Value?,
 
-        val tenderers: List<OrganizationReference>,
+        val tenderers: List<OrganizationReference>?,
 
-        val relatedLots: List<String>
+        val relatedLots: List<String>?
 )

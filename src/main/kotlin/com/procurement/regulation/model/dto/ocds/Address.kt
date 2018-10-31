@@ -17,11 +17,11 @@ data class Address @JsonCreator constructor(
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class AddressDetails(
 
-        val country: CountryDetails,
+        val country: CountryDetails?,
 
-        val region: RegionDetails,
+        val region: RegionDetails?,
 
-        val locality: LocalityDetails
+        val locality: LocalityDetails?
 )
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -29,7 +29,7 @@ data class CountryDetails(
 
         var scheme: String?,
 
-        val id: String,
+        val id: String?,
 
         var description: String?,
 
@@ -41,7 +41,7 @@ data class RegionDetails(
 
         var scheme: String?,
 
-        val id: String,
+        val id: String?,
 
         var description: String?,
 
@@ -51,11 +51,11 @@ data class RegionDetails(
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class LocalityDetails(
 
-        var scheme: String,
+        var scheme: String?,
 
-        val id: String,
+        val id: String?,
 
-        var description: String,
+        var description: String?,
 
         var uri: String?
 )

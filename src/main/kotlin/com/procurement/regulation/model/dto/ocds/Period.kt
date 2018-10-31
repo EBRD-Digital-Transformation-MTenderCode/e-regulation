@@ -6,7 +6,7 @@ import java.time.LocalDateTime
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class Period(
 
-        val startDate: LocalDateTime,
+        val startDate: LocalDateTime?,
 
         val endDate: LocalDateTime?
 )

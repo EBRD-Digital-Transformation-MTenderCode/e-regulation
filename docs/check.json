@@ -1,11 +1,11 @@
 {
-  "id": "a0bcd000-b00d-0000-b0e0-0b70020b1283",
-  "command": "getTerms",
+  "id": "30ded470-dcf8-11e8-ab09-af654c6603c0",
+  "command": "createAC",
   "context": {
-    "operationId": "a0bcd000-b00d-0000-b0e0-0b70020b1283",
-    "requestId": "a1bff750-dc35-11e8-851d-f9eb2a9a7526",
-    "cpid": "ocds-t1s2t3-MD-1540896892431",
-    "ocid": "ocds-t1s2t3-MD-1540896892431-EV-1540897438372",
+    "operationId": "d100d000-aa00-4000-ae0e-0f000001f336",
+    "requestId": "30ded470-dcf8-11e8-ab09-af654c6603c0",
+    "cpid": "ocds-t1s2t3-MD-1540980267066",
+    "ocid": "ocds-t1s2t3-MD-1540980267066-EV-1540980267190",
     "stage": "AC",
     "prevStage": "EV",
     "processType": "awardPeriodEnd",
@@ -14,87 +14,103 @@
     "owner": "445f6851-c908-407d-9b45-14b92f3e964b",
     "country": "MD",
     "language": "ro",
-    "pmd": "TEST_SV",
-    "token": "90f431a1-7312-479c-991a-86b5671f6f35",
+    "pmd": "TEST_OT",
+    "token": "6b844596-6097-44c3-8814-c0fd46664fb5",
     "outcomes": [
       {
-        "id": "ocds-t1s2t3-MD-1540896892431-AC-1540982850521",
-        "token": "69780dd9-feda-4cfc-b346-16240d72ebf8"
+        "id": "d7bb9aa6-4a94-4556-b3f4-60a975d874cd"
       }
     ],
-    "startDate": "2018-10-30T11:19:13Z",
-    "endDate": "2018-10-30T11:19:19Z",
+    "startDate": "2018-10-31T10:31:56Z",
+    "endDate": "2018-10-31T10:32:01Z",
     "isAuction": false,
-    "mainProcurementCategory": "works"
+    "mainProcurementCategory": "goods"
   },
   "data": {
     "awards": [
       {
-        "token": "37701de1-8be4-4edb-a547-c38a368b958b",
-        "id": "170103c1-dc35-11e8-b77a-3de1601e7c11",
-        "date": "2018-10-30T11:19:19Z",
-        "description": "",
-        "status": "unsuccessful",
+        "token": "be001a0f-6082-40c3-ba15-65deea4affcc",
+        "id": "62a3d610-dcf6-11e8-b77a-3de1601e7c11",
+        "date": "2018-10-31T10:32:01Z",
+        "status": "active",
         "statusDetails": "empty",
         "value": {
-          "amount": 155.00,
-          "currency": "USD"
+          "amount": 150.00,
+          "currency": "MDL"
         },
         "relatedLots": [
-          "3a97e9f1-dc32-11e8-b90f-5986bfe2f966"
+          "59bf99a1-dcf4-11e8-b90f-5986bfe2f966"
         ],
-        "relatedBid": "7fe67560-dc34-11e8-ad26-e5c1eb0d4905",
+        "relatedBid": "21e484d0-dcf6-11e8-ad26-e5c1eb0d4905",
         "suppliers": [
           {
-            "id": "MD-IDNO-654-546-1",
-            "name": "name"
+            "id": "MD-IDNO-12abc",
+            "name": "name of bidder8"
+          }
+        ],
+        "documents": [
+          {
+            "id": "b4ea62fc-c667-4943-bf97-9f9869458095-1540919661506",
+            "documentType": "evaluationReports",
+            "relatedLots": [
+              "59bf99a1-dcf4-11e8-b90f-5986bfe2f966"
+            ]
+          },
+          {
+            "id": "637f90bf-5faa-4b13-a86c-db5142926dd7-1540980932094",
+            "documentType": "contractSchedule",
+            "relatedLots": [
+              "59bf99a1-dcf4-11e8-b90f-5986bfe2f966"
+            ]
           }
         ]
       },
       {
-        "token": "e01258a9-65be-410c-8984-4cef88e21b01",
-        "id": "170103c0-dc35-11e8-b77a-3de1601e7c11",
-        "date": "2018-10-30T11:19:19Z",
-        "status": "active",
+        "token": "c02abf77-0513-448d-84c1-f39c00a40329",
+        "id": "62a3d611-dcf6-11e8-b77a-3de1601e7c11",
+        "date": "2018-10-31T10:32:01Z",
+        "description": "",
+        "status": "unsuccessful",
         "statusDetails": "empty",
         "value": {
-          "amount": 155.00,
-          "currency": "USD"
+          "amount": 150.00,
+          "currency": "MDL"
         },
         "relatedLots": [
-          "3a97e9f1-dc32-11e8-b90f-5986bfe2f966"
+          "59bf99a1-dcf4-11e8-b90f-5986bfe2f966"
         ],
-        "relatedBid": "695469b0-dc34-11e8-ad26-e5c1eb0d4905",
+        "relatedBid": "29905330-dcf6-11e8-ad26-e5c1eb0d4905",
         "suppliers": [
           {
-            "id": "MD-IDNO-654-546-1asde",
-            "name": "name"
+            "id": "MD-IDNO-12a3b4c",
+            "name": "name of bidder8"
           }
         ]
       }
     ],
     "awardPeriod": {
-      "startDate": "2018-10-30T11:15:21Z",
-      "endDate": "2018-10-30T11:19:19Z"
+      "startDate": "2018-10-31T10:19:00Z",
+      "endDate": "2018-10-31T10:32:01Z"
     },
     "unsuccessfulLots": [],
     "bids": [
       {
-        "id": "695469b0-dc34-11e8-ad26-e5c1eb0d4905",
-        "date": "2018-10-30T11:19:13Z",
+        "id": "21e484d0-dcf6-11e8-ad26-e5c1eb0d4905",
+        "date": "2018-10-31T10:31:56Z",
         "status": "valid",
         "statusDetails": "empty",
         "tenderers": [
           {
-            "id": "MD-IDNO-654-546-1asde",
-            "name": "name",
+            "id": "MD-IDNO-12abc",
+            "name": "name of bidder8",
             "identifier": {
-              "id": "654-546-1asde",
+              "id": "12abc",
               "scheme": "MD-IDNO",
-              "legalName": "LEGALNAME"
+              "legalName": "Legalname",
+              "uri": "233"
             },
             "address": {
-              "streetAddress": "gagarina",
+              "streetAddress": "dfhg",
               "addressDetails": {
                 "country": {
                   "scheme": "iso-alpha2",
@@ -104,51 +120,70 @@
                 },
                 "region": {
                   "scheme": "CUATM",
-                  "id": "0101000",
-                  "description": "mun.Chişinău",
+                  "id": "1000000",
+                  "description": "Anenii Noi",
                   "uri": "http://statistica.md"
                 },
                 "locality": {
-                  "scheme": "ddd",
-                  "id": "dv01010000101000",
-                  "description": "0101000"
+                  "scheme": "CUATM",
+                  "id": "1001000",
+                  "description": "or.Anenii Noi",
+                  "uri": "http://statistica.md"
                 }
               }
             },
             "contactPoint": {
-              "name": "dd",
-              "email": "dd",
-              "telephone": "759"
+              "name": "vdv",
+              "email": "dvdvdv",
+              "telephone": "45621",
+              "url": "dvdv"
             },
             "details": {
-              "scale": "large"
+              "scale": "micro"
             }
           }
         ],
         "value": {
-          "amount": 155.00,
-          "currency": "USD"
+          "amount": 150.00,
+          "currency": "MDL"
         },
+        "documents": [
+          {
+            "id": "b4ea62fc-c667-4943-bf97-9f9869458095-1540919661506",
+            "documentType": "x_eligibilityDocuments",
+            "relatedLots": [
+              "59bf99a1-dcf4-11e8-b90f-5986bfe2f966"
+            ]
+          },
+          {
+            "id": "637f90bf-5faa-4b13-a86c-db5142926dd7-1540980932094",
+            "documentType": "submissionDocuments",
+            "relatedLots": [
+              "59bf99a1-dcf4-11e8-b90f-5986bfe2f966"
+            ]
+          }
+        ],
         "relatedLots": [
-          "3a97e9f1-dc32-11e8-b90f-5986bfe2f966"
+          "59bf99a1-dcf4-11e8-b90f-5986bfe2f966"
         ]
       },
       {
-        "id": "7fe67560-dc34-11e8-ad26-e5c1eb0d4905",
-        "date": "2018-10-30T11:19:13Z",
+        "id": "29905330-dcf6-11e8-ad26-e5c1eb0d4905",
+        "date": "2018-10-31T10:31:56Z",
         "status": "withdrawn",
         "statusDetails": "empty",
         "tenderers": [
           {
-            "id": "MD-IDNO-654-546-1",
-            "name": "name",
+            "id": "MD-IDNO-12a3b4c",
+            "name": "name of bidder8",
             "identifier": {
-              "id": "654-546-1",
+              "id": "12a3b4c",
               "scheme": "MD-IDNO",
-              "legalName": "LEGALNAME"
+              "legalName": "Legalname",
+              "uri": "233"
             },
             "address": {
-              "streetAddress": "gagarina",
+              "streetAddress": "dfhg",
               "addressDetails": {
                 "country": {
                   "scheme": "iso-alpha2",
@@ -158,46 +193,64 @@
                 },
                 "region": {
                   "scheme": "CUATM",
-                  "id": "0101000",
-                  "description": "mun.Chişinău",
+                  "id": "1000000",
+                  "description": "Anenii Noi",
                   "uri": "http://statistica.md"
                 },
                 "locality": {
-                  "scheme": "ddd",
-                  "id": "dv01010000101000",
-                  "description": "0101000"
+                  "scheme": "CUATM",
+                  "id": "1001000",
+                  "description": "or.Anenii Noi",
+                  "uri": "http://statistica.md"
                 }
               }
             },
             "contactPoint": {
-              "name": "dd",
-              "email": "dd",
-              "telephone": "759"
+              "name": "vdv",
+              "email": "dvdvdv",
+              "telephone": "45621",
+              "url": "dvdv"
             },
             "details": {
-              "scale": "large"
+              "scale": "micro"
             }
           }
         ],
         "value": {
-          "amount": 155.00,
-          "currency": "USD"
+          "amount": 150.00,
+          "currency": "MDL"
         },
+        "documents": [
+          {
+            "id": "b4ea62fc-c667-4943-bf97-9f9869458095-1540919661506",
+            "documentType": "x_eligibilityDocuments",
+            "relatedLots": [
+              "59bf99a1-dcf4-11e8-b90f-5986bfe2f966"
+            ]
+          },
+          {
+            "id": "637f90bf-5faa-4b13-a86c-db5142926dd7-1540980932094",
+            "documentType": "submissionDocuments",
+            "relatedLots": [
+              "59bf99a1-dcf4-11e8-b90f-5986bfe2f966"
+            ]
+          }
+        ],
         "relatedLots": [
-          "3a97e9f1-dc32-11e8-b90f-5986bfe2f966"
+          "59bf99a1-dcf4-11e8-b90f-5986bfe2f966"
         ]
       }
     ],
     "lots": [
       {
-        "id": "3a97e9f1-dc32-11e8-b90f-5986bfe2f966",
-        "title": "f",
-        "description": "f",
+        "id": "59bf99a1-dcf4-11e8-b90f-5986bfe2f966",
+        "title": "lot2",
+        "description": "2",
         "status": "complete",
         "statusDetails": "empty",
         "value": {
-          "amount": 600.00,
-          "currency": "USD"
+          "amount": 200.00,
+          "currency": "MDL"
         },
         "options": [
           {
@@ -220,12 +273,13 @@
           }
         ],
         "contractPeriod": {
-          "startDate": "2018-11-15T00:00:00Z",
-          "endDate": "2018-11-19T00:00:00Z"
+          "startDate": "2018-11-07T00:40:00Z",
+          "endDate": "2018-11-10T00:45:00Z"
         },
         "placeOfPerformance": {
           "address": {
-            "streetAddress": "ggg",
+            "streetAddress": "Steet",
+            "postalCode": "5",
             "addressDetails": {
               "country": {
                 "scheme": "iso-alpha2",
@@ -235,43 +289,24 @@
               },
               "region": {
                 "scheme": "CUATM",
-                "id": "0101000",
-                "description": "mun.Chişinău",
+                "id": "0301000",
+                "description": "mun.Bălţi",
                 "uri": "http://statistica.md"
               },
               "locality": {
-                "scheme": "fgfgf",
-                "id": "fgfgf",
-                "description": "fgfgfg"
+                "scheme": "CUATM",
+                "id": "0301000",
+                "description": "mun.Bălţi",
+                "uri": "http://statistica.md"
               }
             }
-          }
+          },
+          "description": "decr"
         }
       }
     ],
     "tenderStatus": "active",
-    "tenderStatusDetails": "awardedContractPreparation",
-    "cans": [
-      {
-        "contract": {
-          "id": "2c0d6eb0-bcbe-41c7-a88c-c81d31c59369",
-          "date": "2018-10-30T11:19:13Z",
-          "awardId": "170103c0-dc35-11e8-b77a-3de1601e7c11",
-          "status": "active",
-          "statusDetails": "empty"
-        }
-      }
-    ],
-    "contracts": [
-      {
-        "token": "69780dd9-feda-4cfc-b346-16240d72ebf8",
-        "id": "ocds-t1s2t3-MD-1540896892431-AC-1540982850521",
-        "date": "2018-10-30T11:19:13Z",
-        "awardId": "170103c0-dc35-11e8-b77a-3de1601e7c11",
-        "status": "pending",
-        "statusDetails": "contractProject"
-      }
-    ]
+    "tenderStatusDetails": "awardedContractPreparation"
   },
   "version": "0.0.1"
 }

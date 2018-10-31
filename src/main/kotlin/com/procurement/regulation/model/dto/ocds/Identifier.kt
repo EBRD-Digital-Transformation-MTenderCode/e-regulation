@@ -4,11 +4,11 @@ import com.fasterxml.jackson.annotation.JsonCreator
 
 data class Identifier @JsonCreator constructor(
 
-        val id: String,
+        val id: String?,
 
-        val scheme: String,
+        val scheme: String?,
 
-        val legalName: String,
+        val legalName: String?,
 
         val uri: String?
 )

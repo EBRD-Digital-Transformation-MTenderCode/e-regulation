@@ -4,5 +4,5 @@ import com.fasterxml.jackson.annotation.JsonCreator
 
 data class Lot @JsonCreator constructor(
 
-        val id: String
+        val id: String?
 )

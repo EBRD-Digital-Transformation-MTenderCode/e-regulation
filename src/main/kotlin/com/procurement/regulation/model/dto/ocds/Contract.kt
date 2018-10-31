@@ -8,9 +8,9 @@ data class Contract @JsonCreator constructor(
 
         val id: String,
 
-        val awardId: String,
+        val awardId: String?,
 
-        val status: String,
+        val status: String?,
 
-        val statusDetails: String
+        val statusDetails: String?
 )

@@ -12,13 +12,13 @@ data class Item @JsonCreator constructor(
 
         var description: String?,
 
-        val classification: Classification,
+        val classification: Classification?,
 
         val additionalClassifications: HashSet<Classification>?,
 
-        val quantity: BigDecimal,
+        val quantity: BigDecimal?,
 
-        val unit: Unit,
+        val unit: Unit?,
 
-        var relatedLot: String
+        var relatedLot: String?
 )

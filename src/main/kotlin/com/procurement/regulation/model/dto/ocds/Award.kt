@@ -7,8 +7,6 @@ import java.time.LocalDateTime
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class Award @JsonCreator constructor(
 
-        var token: String?,
-
         val id: String,
 
         var date: LocalDateTime?,

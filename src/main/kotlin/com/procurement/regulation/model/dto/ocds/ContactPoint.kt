@@ -6,11 +6,11 @@ import com.fasterxml.jackson.annotation.JsonInclude
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class ContactPoint @JsonCreator constructor(
 
-        val name: String,
+        val name: String?,
 
-        val email: String,
+        val email: String?,
 
-        val telephone: String,
+        val telephone: String?,
 
         val faxNumber: String?,
 
