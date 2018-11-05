@@ -7,18 +7,19 @@ import com.procurement.regulation.model.dto.ocds.MainProcurementCategory
 import com.procurement.regulation.model.dto.templates.TemplateRule
 import com.procurement.regulation.utils.toObject
 import org.springframework.stereotype.Service
+import java.util.*
 
 @Service
 class TemplateService(private val rulesService: RulesService,
                       private val templateDao: TemplateDao) {
 
-    fun getStaticMetrics(country: String, pmd: String, language: String, mainProcurementCategory: String): List<AgreedMetric> {
+    fun getStaticMetrics(country: String, pmd: String, language: String, mainProcurementCategory: String): LinkedList<AgreedMetric> {
         when (MainProcurementCategory.fromValue(mainProcurementCategory)) {
             MainProcurementCategory.GOODS -> {
                 val rule = rulesService.getRule(country, pmd, GOODS_STATIC)
                 val templateRule = toObject(TemplateRule::class.java, rule)
                 val templates = templateDao.getTemplates(country, pmd, language, templateRule.templateIds)
-                val metrics = mutableListOf<AgreedMetric>()
+                val metrics = LinkedList<AgreedMetric>()
                 templates.forEach { template ->
                     metrics.add(toObject(AgreedMetric::class.java, template))
                 }
@@ -28,7 +29,7 @@ class TemplateService(private val rulesService: RulesService,
                 val rule = rulesService.getRule(country, pmd, SERVICES_STATIC)
                 val templateRule = toObject(TemplateRule::class.java, rule)
                 val templates = templateDao.getTemplates(country, pmd, language, templateRule.templateIds)
-                val metrics = mutableListOf<AgreedMetric>()
+                val metrics = LinkedList<AgreedMetric>()
                 templates.forEach { template ->
                     metrics.add(toObject(AgreedMetric::class.java, template))
                 }
@@ -38,7 +39,7 @@ class TemplateService(private val rulesService: RulesService,
                 val rule = rulesService.getRule(country, pmd, WORKS_STATIC)
                 val templateRule = toObject(TemplateRule::class.java, rule)
                 val templates = templateDao.getTemplates(country, pmd, language, templateRule.templateIds)
-                val metrics = mutableListOf<AgreedMetric>()
+                val metrics = LinkedList<AgreedMetric>()
                 templates.forEach { template ->
                     metrics.add(toObject(AgreedMetric::class.java, template))
                 }
@@ -47,13 +48,13 @@ class TemplateService(private val rulesService: RulesService,
         }
     }
 
-    fun getDynamicMetrics(country: String, pmd: String, language: String, mainProcurementCategory: String): List<AgreedMetric> {
+    fun getDynamicMetrics(country: String, pmd: String, language: String, mainProcurementCategory: String): LinkedList<AgreedMetric> {
         when (MainProcurementCategory.fromValue(mainProcurementCategory)) {
             MainProcurementCategory.GOODS -> {
                 val rule = rulesService.getRule(country, pmd, GOODS_DYNAMIC)
                 val templateRule = toObject(TemplateRule::class.java, rule)
                 val templates = templateDao.getTemplates(country, pmd, language, templateRule.templateIds)
-                val metrics = mutableListOf<AgreedMetric>()
+                val metrics = LinkedList<AgreedMetric>()
                 templates.forEach { template ->
                     metrics.add(toObject(AgreedMetric::class.java, template))
                 }
@@ -63,14 +64,14 @@ class TemplateService(private val rulesService: RulesService,
                 val rule = rulesService.getRule(country, pmd, SERVICES_DYNAMIC)
                 val templateRule = toObject(TemplateRule::class.java, rule)
                 val templates = templateDao.getTemplates(country, pmd, language, templateRule.templateIds)
-                val metrics = mutableListOf<AgreedMetric>()
+                val metrics = LinkedList<AgreedMetric>()
                 templates.forEach { template ->
                     metrics.add(toObject(AgreedMetric::class.java, template))
                 }
                 return metrics
             }
             MainProcurementCategory.WORKS -> {
-                return mutableListOf()
+                return LinkedList()
             }
         }
 

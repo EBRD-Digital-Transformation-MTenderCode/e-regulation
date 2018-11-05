@@ -2,13 +2,14 @@ package com.procurement.regulation.model.dto.bpe.templates
 
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonInclude
+import java.util.*
 
 
 data class ContractTerm @JsonCreator constructor(
 
         val id: String,
 
-        val agreedMetrics: List<AgreedMetric>
+        val agreedMetrics: LinkedList<AgreedMetric>
 )
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -20,7 +21,7 @@ data class AgreedMetric @JsonCreator constructor(
 
         val description: String,
 
-        val observations: Set<Observation>
+        var observations: Set<Observation>
 )
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -42,5 +43,5 @@ data class ObservationUnit @JsonCreator constructor(
 
         val scheme: String,
 
-        val measure: Any?
+        var measure: Any?
 )

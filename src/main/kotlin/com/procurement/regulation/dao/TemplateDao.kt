@@ -1,17 +1,17 @@
 package com.procurement.regulation.dao
 
 import com.datastax.driver.core.Session
-import com.datastax.driver.core.querybuilder.QueryBuilder
 import com.datastax.driver.core.querybuilder.QueryBuilder.eq
 import com.datastax.driver.core.querybuilder.QueryBuilder.select
-import com.procurement.regulation.model.entity.TemplateEntity
+import com.procurement.regulation.exception.ErrorException
+import com.procurement.regulation.exception.ErrorType
 import org.springframework.stereotype.Service
 import java.util.*
 
 @Service
 class TemplateDao(private val session: Session) {
 
-    fun getTemplate(country: String, pmd: String, language: String, templateId: String): String? {
+    fun getTemplate(country: String, pmd: String, language: String, templateId: String): String {
         val query = select()
                 .column(TEMPLATE)
                 .from(TABLE)
@@ -20,31 +20,17 @@ class TemplateDao(private val session: Session) {
                 .and(eq(LANGUAGE, language))
                 .and(eq(TEMPLATE_ID, templateId))
                 .limit(1)
-        val row = session.execute(query).one()
-        return if (row != null) return row.getString(TEMPLATE)
-        else null
+        val row = session.execute(query).one() ?: throw ErrorException(ErrorType.TEMPLATE_NOT_FOUND)
+        return row.getString(TEMPLATE)
     }
 
 
-    fun getTemplates(country: String, pmd: String, language: String, templateIds: Set<String>): List<String> {
-        val query = select()
-                .all()
-                .from(TABLE)
-                .where(eq(COUNTRY, country))
-                .and(eq(PMD, pmd))
-                .and(eq(LANGUAGE, language))
-                .and(QueryBuilder.`in`(TEMPLATE_ID, *templateIds.toTypedArray()))
-        val resultSet = session.execute(query)
-        val entities = ArrayList<TemplateEntity>()
-        resultSet.forEach { row ->
-            entities.add(TemplateEntity(
-                    row.getString(COUNTRY),
-                    row.getString(PMD),
-                    row.getString(LANGUAGE),
-                    row.getString(TEMPLATE_ID),
-                    row.getString(TEMPLATE)))
+    fun getTemplates(country: String, pmd: String, language: String, templateIds: LinkedList<String>): LinkedList<String> {
+        val templates = LinkedList<String>()
+        templateIds.forEach { templateId ->
+          templates.add(getTemplate(country, pmd, language, templateId))
         }
-        return entities.asSequence().map { it.template }.toList()
+        return templates
     }
 
     companion object {

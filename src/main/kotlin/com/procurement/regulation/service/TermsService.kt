@@ -3,12 +3,14 @@ package com.procurement.regulation.service
 import com.procurement.regulation.dao.TermsDao
 import com.procurement.regulation.exception.ErrorException
 import com.procurement.regulation.exception.ErrorType
+import com.procurement.regulation.model.dto.GetTermsRq
+import com.procurement.regulation.model.dto.GetTermsRs
+import com.procurement.regulation.model.dto.UpdateTermsRq
+import com.procurement.regulation.model.dto.UpdateTermsRs
 import com.procurement.regulation.model.dto.bpe.CommandMessage
 import com.procurement.regulation.model.dto.bpe.ResponseDto
 import com.procurement.regulation.model.dto.bpe.templates.AgreedMetric
 import com.procurement.regulation.model.dto.bpe.templates.ContractTerm
-import com.procurement.regulation.model.dto.request.GetTermsRq
-import com.procurement.regulation.model.dto.request.GetTermsRs
 import com.procurement.regulation.model.entity.TermsEntity
 import com.procurement.regulation.utils.toJson
 import com.procurement.regulation.utils.toObject
@@ -25,7 +27,7 @@ class TermsService(private val templateService: TemplateService,
         val mainProcurementCategory = cm.context.mainProcurementCategory ?: throw ErrorException(ErrorType.CONTEXT)
         val dto = toObject(GetTermsRq::class.java, cm.data)
 
-        val staticMetrics = templateService.getStaticMetrics(country, pmd, language, mainProcurementCategory)
+        val agreedMetrics = templateService.getStaticMetrics(country, pmd, language, mainProcurementCategory)
         val dynamicTemplates = templateService.getDynamicMetrics(country, pmd, language, mainProcurementCategory)
         val contractTerms = mutableSetOf<ContractTerm>()
         val entities = mutableListOf<TermsEntity>()
@@ -42,11 +44,40 @@ class TermsService(private val templateService: TemplateService,
                     }
                 }
             }
-            val agreedMetrics = staticMetrics.plus(dynamicMetrics)
-            contractTerms.add(ContractTerm(id = contract.id, agreedMetrics = agreedMetrics))
-            entities.add(TermsEntity(contract.id, toJson(contractTerms)))
+            dynamicMetrics.forEach { dynamicMetric ->
+                agreedMetrics.add(dynamicMetric)
+            }
+            val contractTerm = ContractTerm(id = contract.id, agreedMetrics = agreedMetrics)
+            entities.add(TermsEntity(contract.id, toJson(contractTerm)))
+            contractTerms.add(contractTerm)
         }
         termsDao.saveAll(entities)
         return ResponseDto(data = GetTermsRs(contractTerms))
+    }
+
+    fun updateTerms(cm: CommandMessage): ResponseDto {
+        val ocid = cm.context.ocid ?: throw ErrorException(ErrorType.CONTEXT)
+        val dto = toObject(UpdateTermsRq::class.java, cm.data)
+
+        val entity = termsDao.getById(ocid) ?: throw ErrorException(ErrorType.TERM_NOT_FOUND)
+        val contractTerm = toObject(ContractTerm::class.java, entity.jsonData)
+        val agreedMetricsRq = dto.agreedMetrics
+        val agreedMetricsDb = contractTerm.agreedMetrics
+        val agreedMetricsRqIds = agreedMetricsRq.asSequence().map { it.id }.toSet()
+        val agreedMetricsDbIds = agreedMetricsDb.asSequence().map { it.id }.toSet()
+        if (!agreedMetricsDbIds.containsAll(agreedMetricsRqIds)) throw ErrorException(ErrorType.INVALID_METRIC_ID)
+        for (agreedMetricRq in agreedMetricsRq) {
+            for (agreedMetricDb in agreedMetricsDb) {
+                if (agreedMetricDb.id == agreedMetricRq.id){
+                    for (observation in agreedMetricDb.observations){
+                        val measure = agreedMetricRq.observations.asSequence().firstOrNull{it.id == observation.id}
+                        observation.unit?.measure = measure
+                    }
+                }
+            }
+        }
+        entity.jsonData = toJson(contractTerm)
+        termsDao.save(entity)
+        return ResponseDto(data = UpdateTermsRs(agreedMetricsDb))
     }
 }

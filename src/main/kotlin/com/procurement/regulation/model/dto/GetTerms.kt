@@ -1,4 +1,4 @@
-package com.procurement.regulation.model.dto.request
+package com.procurement.regulation.model.dto
 
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.procurement.regulation.model.dto.bpe.templates.ContractTerm

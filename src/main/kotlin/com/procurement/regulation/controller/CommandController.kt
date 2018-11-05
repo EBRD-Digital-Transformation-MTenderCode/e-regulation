@@ -22,7 +22,7 @@ class CommandController(private val termsService: TermsService) {
     fun execute(cm: CommandMessage): ResponseDto {
         return when (cm.command) {
             CommandType.GET_TERMS -> termsService.getTerms(cm)
-            CommandType.UPDATE_TERMS -> termsService.getTerms(cm)
+            CommandType.UPDATE_TERMS -> termsService.updateTerms(cm)
         }
     }
 
