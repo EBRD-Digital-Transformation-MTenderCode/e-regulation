@@ -4,6 +4,40 @@
       "id": "",
       "agreedMetrics": [
         {
+          "id": "cc-general",
+          "title": "General Responsibilities",
+          "description": "Contract conditions governing the general responsibilities related to both: CA and EO",
+          "observations": [
+            {
+              "id": "cc-general-1-1",
+              "notes": "Maximum days to inform on invoking Force Majeure",
+              "unit": {
+                "name": "day",
+                "id": "359",
+                "scheme": "MD-CUMC"
+              }
+            },
+            {
+              "id": "cc-general-1-2",
+              "notes": "Maximum days to inform on termination intention",
+              "unit": {
+                "name": "day",
+                "id": "359",
+                "scheme": "MD-CUMC"
+              }
+            },
+            {
+              "id": "cc-general-1-3",
+              "notes": "Maximum days to respond on termination intention",
+              "unit": {
+                "name": "day",
+                "id": "359",
+                "scheme": "MD-CUMC"
+              }
+            }
+          ]
+        },
+        {
           "id": "cc-tenderer-1",
           "title": "Execution Guarantee",
           "description": "Contract conditions governing the general responsibilities related to EO regarding guarantee",
@@ -13,43 +47,7 @@
               "notes": "Guarantee amount",
               "unit": {
                 "name": "percent",
-                "id": "746",
-                "scheme": "MD-CUMC"
-              }
-            },
-            {
-              "id": "cc-tenderer-1-2",
-              "notes": "Guarantee amount provided by the general entrepreneur",
-              "unit": {
-                "name": "percent",
-                "id": "746",
-                "scheme": "MD-CUMC"
-              }
-            },
-            {
-              "id": "cc-tenderer-1-3",
-              "notes": "Amount of guarantee in case of successive withholding from partial invoices",
-              "unit": {
-                "name": "day",
-                "id": "359",
-                "scheme": "MD-CUMC"
-              }
-            },
-            {
-              "id": "cc-tenderer-1-4",
-              "notes": "Maximum amount in case of successive withholding from partial invoices",
-              "unit": {
-                "name": "day",
-                "id": "359",
-                "scheme": "MD-CUMC"
-              }
-            },
-            {
-              "id": "cc-tenderer-1-5",
-              "notes": "Maximum days of guarantee transfer",
-              "unit": {
-                "name": "day",
-                "id": "359",
+                "id": "743",
                 "scheme": "MD-CUMC"
               }
             }
@@ -64,7 +62,7 @@
               "id": "cc-tenderer-2-1",
               "notes": "Maximum days from the signing of the contract to Buyer's announcement of the availability on delivery of the Goods and/or the provision of the Services",
               "unit": {
-                "name": "days",
+                "name": "day",
                 "id": "359",
                 "scheme": "MD-CUMC"
               }
@@ -73,7 +71,7 @@
               "id": "cc-tenderer-2-2",
               "notes": "Maximum days to respond to claims on quality of delivered goods and/or services",
               "unit": {
-                "name": "days",
+                "name": "day",
                 "id": "359",
                 "scheme": "MD-CUMC"
               }
@@ -89,36 +87,9 @@
             },
             {
               "id": "cc-tenderer-2-4",
-              "notes": "Period after which it is considered a refuse of execute the contrac",
+              "notes": "Period after which it is considered a refuse of execute the contract",
               "unit": {
                 "name": "day",
-                "id": "359",
-                "scheme": "MD-CUMC"
-              }
-            },
-            {
-              "id": "cc-tenderer-2-5",
-              "notes": "Warranty Period for Executed Worksr",
-              "unit": {
-                "name": "month",
-                "id": "362",
-                "scheme": "MD-CUMC"
-              }
-            },
-            {
-              "id": "cc-tenderer-2-6",
-              "notes": "Maximum days from the signing and registration of the contract when the works will start",
-              "unit": {
-                "name": "days",
-                "id": "359",
-                "scheme": "MD-CUMC"
-              }
-            },
-            {
-              "id": "cc-tenderer-2-7",
-              "notes": "Works execution duration from date signed",
-              "unit": {
-                "name": "days",
                 "id": "359",
                 "scheme": "MD-CUMC"
               }
@@ -135,7 +106,7 @@
               "notes": "Material liability for delivery with delay",
               "unit": {
                 "name": "percent",
-                "id": "746",
+                "id": "743",
                 "scheme": "MD-CUMC"
               }
             },
@@ -144,7 +115,7 @@
               "notes": "Maximum of material liability for delivery with delay",
               "unit": {
                 "name": "percent",
-                "id": "746",
+                "id": "743",
                 "scheme": "MD-CUMC"
               }
             },
@@ -153,25 +124,7 @@
               "notes": "Maximum of the penalty for the refusal to execute the contract",
               "unit": {
                 "name": "percent",
-                "id": "746",
-                "scheme": "MD-CUMC"
-              }
-            },
-            {
-              "id": "cc-tenderer-3-4",
-              "notes": "Material liability for late execution of works",
-              "unit": {
-                "name": "percent per day",
-                "id": "746",
-                "scheme": "MD-CUMC"
-              }
-            },
-            {
-              "id": "cc-tenderer-3-5",
-              "notes": "Maximum of material liability for Late execution of Works",
-              "unit": {
-                "name": "percent",
-                "id": "746",
+                "id": "743",
                 "scheme": "MD-CUMC"
               }
             }
@@ -184,10 +137,10 @@
           "observations": [
             {
               "id": "cc-buyer-1-1",
-              "notes": "The maximum term for non-payment of payments due by the Beneficiary",
+              "notes": "Maximum days to submit claims on quality of delivered goods and/or services",
               "unit": {
-                "name": "month",
-                "id": "362",
+                "name": "day",
+                "id": "359",
                 "scheme": "MD-CUMC"
               }
             }
@@ -203,7 +156,7 @@
               "notes": "Beneficiary's material liability in case of late payment",
               "unit": {
                 "name": "percent",
-                "id": "746",
+                "id": "743",
                 "scheme": "MD-CUMC"
               }
             },
@@ -212,9 +165,36 @@
               "notes": "Maximum of Beneficiary's material liability in case of late payment",
               "unit": {
                 "name": "percent",
-                "id": "746",
+                "id": "743",
                 "scheme": "MD-CUMC"
               }
+            }
+          ]
+        },
+        {
+          "id": "cc-subject",
+          "title": "Specification to ",
+          "description": "Description of procured items of subject of contracting process",
+          "observations": [
+            {
+              "id": "cc-subject-1",
+              "notes": "Item model"
+            },
+            {
+              "id": "cc-subject-2",
+              "notes": "Country of origin"
+            },
+            {
+              "id": "cc-subject-3",
+              "notes": "Producer"
+            },
+            {
+              "id": "cc-subject-4",
+              "notes": "Tech specification"
+            },
+            {
+              "id": "cc-subject-5",
+              "notes": "Reference standards"
             }
           ]
         }

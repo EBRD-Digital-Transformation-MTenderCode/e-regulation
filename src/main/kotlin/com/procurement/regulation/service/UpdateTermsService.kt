@@ -18,44 +18,10 @@ import org.springframework.stereotype.Service
 import java.util.*
 
 @Service
-class TermsService(private val templateService: TemplateService,
-                   private val termsDao: TermsDao) {
+class UpdateTermsService(private val templateService: TemplateService,
+                         private val termsDao: TermsDao) {
 
-    fun getTerms(cm: CommandMessage): ResponseDto {
-        val country = cm.context.country ?: throw ErrorException(ErrorType.CONTEXT)
-        val pmd = cm.context.pmd ?: throw ErrorException(ErrorType.CONTEXT)
-        val language = cm.context.language ?: throw ErrorException(ErrorType.CONTEXT)
-        val mainProcurementCategory = cm.context.mainProcurementCategory ?: throw ErrorException(ErrorType.CONTEXT)
-        val dto = toObject(GetTermsRq::class.java, cm.data)
-
-        val staticTemplates = templateService.getStaticMetrics(country, pmd, language, mainProcurementCategory)
-        val dynamicTemplates = templateService.getDynamicMetrics(country, pmd, language, mainProcurementCategory)
-        val contractTerms = mutableSetOf<ContractTerm>()
-        val entities = mutableListOf<TermsEntity>()
-        for (contract in dto.contracts) {
-            val award = dto.awards.asSequence().firstOrNull { it.id == contract.awardId }
-                    ?: throw ErrorException(ErrorType.AWARD_NOT_FOUND)
-            val agreedMetrics = LinkedList<AgreedMetric>()
-            agreedMetrics.addAll(staticTemplates)
-            val items = award.items
-            if (items != null && items.isNotEmpty()) {
-                for (dynamicTemplate in dynamicTemplates) {
-                    for (item in items) {
-                        val id = dynamicTemplate.id + "-" + award.id + "-" + item.id
-                        val title = item.description + ": subject specification"
-                        agreedMetrics.add(dynamicTemplate.copy(id = id, title = title))
-                    }
-                }
-            }
-            val contractTerm = ContractTerm(id = contract.id, agreedMetrics = agreedMetrics)
-            entities.add(TermsEntity(contract.id, toJson(contractTerm)))
-            contractTerms.add(contractTerm)
-        }
-        termsDao.saveAll(entities)
-        return ResponseDto(data = GetTermsRs(contractTerms))
-    }
-
-    fun updateTerms(cm: CommandMessage): ResponseDto {
+      fun updateTerms(cm: CommandMessage): ResponseDto {
         val ocid = cm.context.ocid ?: throw ErrorException(ErrorType.CONTEXT)
         val dto = toObject(UpdateTermsRq::class.java, cm.data)
 
