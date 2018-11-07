@@ -28,7 +28,7 @@ class TemplateDao(private val session: Session) {
     fun getTemplates(country: String, pmd: String, language: String, templateIds: LinkedList<String>): LinkedList<String> {
         val templates = LinkedList<String>()
         templateIds.forEach { templateId ->
-          templates.add(getTemplate(country, pmd, language, templateId))
+            templates.add(getTemplate(country, pmd, language, templateId))
         }
         return templates
     }

@@ -42,7 +42,7 @@ class TermsService(private val templateService: TemplateService,
                 for (dynamicTemplate in dynamicTemplates) {
                     for (item in items) {
                         val id = dynamicTemplate.id + "-" + award.id + "-" + item.id
-                        val title =  item.description + ": subject specification"
+                        val title = item.description + ": subject specification"
                         agreedMetrics.add(dynamicTemplate.copy(id = id, title = title))
                     }
                 }
