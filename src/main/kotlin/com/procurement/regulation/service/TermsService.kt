@@ -41,8 +41,9 @@ class TermsService(private val templateService: TemplateService,
             if (items != null && items.isNotEmpty()) {
                 for (dynamicTemplate in dynamicTemplates) {
                     for (item in items) {
-                        val metricId = dynamicTemplate.id + award.id + item.id
-                        agreedMetrics.add(dynamicTemplate.copy(id = metricId))
+                        val id = dynamicTemplate.id + "-" + award.id + "-" + item.id
+                        val title =  item.description + ": subject specification"
+                        agreedMetrics.add(dynamicTemplate.copy(id = id, title = title))
                     }
                 }
             }
@@ -67,9 +68,9 @@ class TermsService(private val templateService: TemplateService,
         if (!agreedMetricsDbIds.containsAll(agreedMetricsRqIds)) throw ErrorException(ErrorType.INVALID_METRIC_ID)
         for (agreedMetricRq in agreedMetricsRq) {
             for (agreedMetricDb in agreedMetricsDb) {
-                if (agreedMetricDb.id == agreedMetricRq.id){
-                    for (observation in agreedMetricDb.observations){
-                        val measure = agreedMetricRq.observations.asSequence().firstOrNull{it.id == observation.id}
+                if (agreedMetricDb.id == agreedMetricRq.id) {
+                    for (observation in agreedMetricDb.observations) {
+                        val measure = agreedMetricRq.observations.asSequence().firstOrNull { it.id == observation.id }
                         observation.unit?.measure = measure
                     }
                 }
