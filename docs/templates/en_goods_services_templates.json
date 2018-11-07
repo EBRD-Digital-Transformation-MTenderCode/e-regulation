@@ -50,6 +50,10 @@
                 "id": "743",
                 "scheme": "MD-CUMC"
               }
+            },
+            {
+              "id": "cc-tenderer-1-2",
+              "notes": "Guarantee type"
             }
           ]
         },
