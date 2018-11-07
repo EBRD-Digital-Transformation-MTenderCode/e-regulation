@@ -14,7 +14,7 @@ class TemplateService(private val rulesService: RulesService,
                       private val templateDao: TemplateDao) {
 
     fun getStaticMetrics(country: String, pmd: String, language: String, mainProcurementCategory: String): LinkedList<AgreedMetric> {
-        when (MainProcurementCategory.valueOf(mainProcurementCategory)) {
+        when (MainProcurementCategory.fromValue(mainProcurementCategory)) {
             MainProcurementCategory.GOODS -> {
                 val rule = rulesService.getRule(country, pmd, GOODS_STATIC)
                 val templateRule = toObject(TemplateRule::class.java, rule)
@@ -49,7 +49,7 @@ class TemplateService(private val rulesService: RulesService,
     }
 
     fun getDynamicMetrics(country: String, pmd: String, language: String, mainProcurementCategory: String): LinkedList<AgreedMetric> {
-        when (MainProcurementCategory.valueOf(mainProcurementCategory)) {
+        when (MainProcurementCategory.fromValue(mainProcurementCategory)) {
             MainProcurementCategory.GOODS -> {
                 val rule = rulesService.getRule(country, pmd, GOODS_DYNAMIC)
                 val templateRule = toObject(TemplateRule::class.java, rule)
