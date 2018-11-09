@@ -1,0 +1,27 @@
+{
+  "id": "cc-subject",
+  "title": "Specificație pentru ",
+  "description": "Informații detaliate privind obiectul achiziției",
+  "observations": [
+    {
+      "id": "cc-subject-1",
+      "notes": "Modelul articolului"
+    },
+    {
+      "id": "cc-subject-2",
+      "notes": "Tara de origine"
+    },
+    {
+      "id": "cc-subject-3",
+      "notes": "Producător"
+    },
+    {
+      "id": "cc-subject-4",
+      "notes": "Specificația tehnică propusă de Furnizor"
+    },
+    {
+      "id": "cc-subject-5",
+      "notes": "Standarde de referință"
+    }
+  ]
+}
