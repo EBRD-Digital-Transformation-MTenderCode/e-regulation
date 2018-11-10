@@ -31,6 +31,8 @@ data class Observation @JsonCreator constructor(
 
         val notes: String,
 
+        val measure: Any?,
+
         val unit: ObservationUnit?
 )
 
@@ -41,7 +43,5 @@ data class ObservationUnit @JsonCreator constructor(
 
         val name: String,
 
-        val scheme: String,
-
-        var measure: Any?
+        val scheme: String
 )
