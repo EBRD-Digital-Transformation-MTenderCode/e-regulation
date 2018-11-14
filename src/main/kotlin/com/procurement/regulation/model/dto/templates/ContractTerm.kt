@@ -43,5 +43,7 @@ data class ObservationUnit @JsonCreator constructor(
 
         val name: String,
 
-        val scheme: String
+        val scheme: String,
+
+        var measure: Any?
 )
