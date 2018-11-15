@@ -125,9 +125,6 @@ INSERT INTO regulation_templates (country,pmd,language,template_id,template) VAL
 INSERT INTO regulation_templates (country,pmd,language,template_id,template) VALUES ('MD','TEST_OT','ro','works-cc-buyer-2','{"id": "cc-buyer-2", "title": "Răspundere", "description": "Condiții contractuale care reglementează responsabilitățile generale legate de entitatea contractantă privind răspunderea", "observations": [ { "id": "cc-buyer-2-1", "notes": "% de răspundere materială a Beneficiarului in caz de achitare cu întârziere", "unit": { "name": "procent", "id": "743", "scheme": "MD-CUMC" } }, { "id": "cc-buyer-2-2", "notes": "% răspundere materială maximă a Beneficiarului in caz de achitare cu întârziere", "unit": { "name": "procent", "id": "743", "scheme": "MD-CUMC"}}]}');
 
 
-
-
-
 INSERT INTO regulation_rules (country,pmd,parameter,value) VALUES ('MD','SV','goods_static','{ "templateIds": ["goods-cc-general", "goods-cc-tenderer-1", "goods-cc-tenderer-2", "goods-cc-tenderer-3", "goods-cc-buyer-1", "goods-cc-buyer-2"] }');
 INSERT INTO regulation_rules (country,pmd,parameter,value) VALUES ('MD','SV','goods_dynamic','{ "templateIds": ["goods-cc-subject"] }');
 INSERT INTO regulation_rules (country,pmd,parameter,value) VALUES ('MD','SV','services_static','{ "templateIds": ["services-cc-general", "services-cc-tenderer-1", "services-cc-tenderer-2", "services-cc-tenderer-3", "services-cc-buyer-1", "services-cc-buyer-2"] }');
