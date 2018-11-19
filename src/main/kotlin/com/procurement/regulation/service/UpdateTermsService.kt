@@ -36,8 +36,8 @@ class UpdateTermsService(private val templateService: TemplateService,
             for (agreedMetricDb in agreedMetricsDb) {
                 if (agreedMetricDb.id == agreedMetricRq.id) {
                     for (observation in agreedMetricDb.observations) {
-                        val measure = agreedMetricRq.observations.asSequence().firstOrNull { it.id == observation.id }
-                        observation.unit?.measure = measure
+                        val observationRq = agreedMetricRq.observations.asSequence().firstOrNull { it.id == observation.id }
+                        observation.unit?.measure = observationRq?.measure
                     }
                 }
             }
