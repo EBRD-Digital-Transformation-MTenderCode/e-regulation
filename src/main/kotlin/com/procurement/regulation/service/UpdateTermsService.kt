@@ -28,19 +28,17 @@ class UpdateTermsService(private val templateService: TemplateService,
         val agreedMetricsDbIds = agreedMetricsDb.asSequence().map { it.id }.toSet()
         if (!agreedMetricsDbIds.containsAll(agreedMetricsRqIds))
             throw ErrorException(ErrorType.INVALID_METRIC_ID, (agreedMetricsDbIds - agreedMetricsRqIds).toString())
-        for (agreedMetricRq in agreedMetricsRq) {
-            for (agreedMetricDb in agreedMetricsDb) {
-                if (agreedMetricDb.id == agreedMetricRq.id) {
-                    for (observationDb in agreedMetricDb.observations) {
-                        for (observationRq in agreedMetricRq.observations) {
-                            if (observationRq.id == observationDb.id) {
-                                observationDb.measure = observationRq.measure
-                            } else {
-                                throw ErrorException(ErrorType.INVALID_OBSERVATION_ID, observationRq.id)
+        agreedMetricsRq.forEach { agreedMetricRq ->
+            agreedMetricsDb.forEach { agreedMetricDb ->
+                if (agreedMetricDb.id == agreedMetricRq.id)
+                    agreedMetricDb.observations.forEach { observationDb ->
+                        agreedMetricRq.observations.forEach { observationRq ->
+                            when {
+                                observationRq.id == observationDb.id -> observationDb.measure = observationRq.measure
+                                else -> throw ErrorException(ErrorType.INVALID_OBSERVATION_ID, observationRq.id)
                             }
                         }
                     }
-                }
             }
         }
         entity.jsonData = toJson(contractTerm)
