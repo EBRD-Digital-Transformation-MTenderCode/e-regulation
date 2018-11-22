@@ -25,20 +25,15 @@ class UpdateTermsService(private val termsDao: TermsDao) {
         val agreedMetricsDb = contractTerm.agreedMetrics
         val agreedMetricsRqIds = agreedMetricsRq.asSequence().map { it.id }.toSet()
         val agreedMetricsDbIds = agreedMetricsDb.asSequence().map { it.id }.toSet()
-        if (!agreedMetricsDbIds.containsAll(agreedMetricsRqIds))
-            throw ErrorException(ErrorType.INVALID_METRIC_ID, (agreedMetricsRqIds - agreedMetricsDbIds).toString())
-        val observationRqIds = agreedMetricsRq.asSequence().flatMap { it.observations.asSequence() }.map { it.id }.toSet()
-        val observationDbIds = agreedMetricsDb.asSequence().flatMap { it.observations.asSequence() }.map { it.id }.toSet()
-        if (!observationDbIds.containsAll(observationRqIds))
-            throw ErrorException(ErrorType.INVALID_OBSERVATION_ID, (observationRqIds - observationDbIds).toString())
-        agreedMetricsRq.forEach { agreedMetricRq ->
-            agreedMetricsDb.forEach { agreedMetricDb ->
-                if (agreedMetricDb.id == agreedMetricRq.id)
-                    agreedMetricDb.observations.forEach { observationDb ->
-                        agreedMetricRq.observations.forEach { observationRq ->
-                            if (observationRq.id == observationDb.id) observationDb.measure = observationRq.measure
-                        }
+        if (!agreedMetricsDbIds.containsAll(agreedMetricsRqIds)) throw ErrorException(ErrorType.INVALID_METRIC_ID)
+        for (agreedMetricRq in agreedMetricsRq) {
+            for (agreedMetricDb in agreedMetricsDb) {
+                if (agreedMetricDb.id == agreedMetricRq.id) {
+                    for (observation in agreedMetricDb.observations) {
+                        val measureRq = agreedMetricRq.observations.asSequence().firstOrNull { it.id == observation.id }?.measure
+                        observation.measure = measureRq
                     }
+                }
             }
         }
         entity.jsonData = toJson(contractTerm)
