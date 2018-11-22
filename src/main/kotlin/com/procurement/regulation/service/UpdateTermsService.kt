@@ -18,8 +18,7 @@ import org.springframework.stereotype.Service
 import java.util.*
 
 @Service
-class UpdateTermsService(private val templateService: TemplateService,
-                         private val termsDao: TermsDao) {
+class UpdateTermsService(private val termsDao: TermsDao) {
 
       fun updateTerms(cm: CommandMessage): ResponseDto {
         val ocid = cm.context.ocid ?: throw ErrorException(ErrorType.CONTEXT)
