@@ -11,6 +11,7 @@ enum class ErrorType constructor(val code: String, val message: String) {
     INVALID_JSON_EMPTY("10.02", "Must be not-empty: "),
     INVALID_JSON_TYPE("10.03", "Invalid type: "),
     INVALID_JSON_VALUE("10.04", "Invalid value: "),
-    INVALID_METRIC_ID("10.04", "Invalid agreed metrics id."),
+    INVALID_METRIC_ID("10.04", "Invalid agreed metrics id "),
+    INVALID_OBSERVATION_ID("10.05", "Invalid observation id "),
     CONTEXT("20.01", "Context parameter not found.");
 }

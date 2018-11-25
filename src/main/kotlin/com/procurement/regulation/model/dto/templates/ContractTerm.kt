@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonInclude
 import java.util.*
 
-
 data class ContractTerm @JsonCreator constructor(
 
         val id: String,
@@ -31,7 +30,7 @@ data class Observation @JsonCreator constructor(
 
         val notes: String,
 
-        val measure: Any?,
+        var measure: Any?,
 
         val unit: ObservationUnit?
 )
@@ -43,7 +42,5 @@ data class ObservationUnit @JsonCreator constructor(
 
         val name: String,
 
-        val scheme: String,
-
-        var measure: Any?
+        val scheme: String
 )
