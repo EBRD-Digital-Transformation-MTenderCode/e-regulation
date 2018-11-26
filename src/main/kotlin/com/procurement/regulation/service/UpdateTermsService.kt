@@ -25,6 +25,7 @@ class UpdateTermsService(private val termsDao: TermsDao) {
         val agreedMetricsDb = contractTerm.agreedMetrics
         val agreedMetricsRqIds = agreedMetricsRq.asSequence().map { it.id }.toSet()
         val agreedMetricsDbIds = agreedMetricsDb.asSequence().map { it.id }.toSet()
+        if (agreedMetricsDbIds.size != agreedMetricsRqIds.size) throw ErrorException(ErrorType.INVALID_METRIC_ID)
         if (!agreedMetricsDbIds.containsAll(agreedMetricsRqIds)) throw ErrorException(ErrorType.INVALID_METRIC_ID)
         for (agreedMetricRq in agreedMetricsRq) {
             for (agreedMetricDb in agreedMetricsDb) {
