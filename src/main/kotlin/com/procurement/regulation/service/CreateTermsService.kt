@@ -29,7 +29,6 @@ class CreateTermsService(private val templateService: TemplateService,
         val staticTemplates = templateService.getStaticMetrics(country, pmd, language, mainProcurementCategory)
         val dynamicTemplates = templateService.getDynamicMetrics(country, pmd, language, mainProcurementCategory)
         val contractTerms = mutableSetOf<ContractTerm>()
-        val entities = mutableListOf<TermsEntity>()
         for (contract in dto.contracts) {
             val award = dto.awards.asSequence().firstOrNull { it.id == contract.awardId }
                     ?: throw ErrorException(ErrorType.AWARD_NOT_FOUND)
@@ -46,10 +45,9 @@ class CreateTermsService(private val templateService: TemplateService,
                 }
             }
             val contractTerm = ContractTerm(id = contract.id, agreedMetrics = agreedMetrics)
-            entities.add(TermsEntity(contract.id, toJson(contractTerm)))
+            termsDao.save(TermsEntity(contract.id, toJson(contractTerm)))
             contractTerms.add(contractTerm)
         }
-        termsDao.saveAll(entities)
         return ResponseDto(data = GetTermsRs(contractTerms))
     }
 }

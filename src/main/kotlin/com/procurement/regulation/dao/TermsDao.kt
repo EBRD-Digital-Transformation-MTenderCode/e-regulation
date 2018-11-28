@@ -29,18 +29,6 @@ class TermsDao(private val session: Session) {
         session.execute(insert)
     }
 
-    fun saveAll(entities: List<TermsEntity>) {
-        val operations = ArrayList<Insert>()
-        entities.forEach { entity ->
-            operations.add(QueryBuilder.insertInto(TABLE)
-                    .value(ID, entity.contractId)
-                    .value(JSON_DATA, entity.jsonData)
-            )
-        }
-        val batch = QueryBuilder.batch(*operations.toTypedArray())
-        session.execute(batch)
-    }
-
     companion object {
         private val TABLE = "regulation_data"
         private val ID = "contract_id"
