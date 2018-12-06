@@ -23,17 +23,26 @@ class UpdateTermsService(private val termsDao: TermsDao) {
         val contractTerm = toObject(ContractTerm::class.java, entity.jsonData)
         val agreedMetricsRq = dto.agreedMetrics
         val agreedMetricsDb = contractTerm.agreedMetrics
+
+        //validation
         val agreedMetricsRqIds = agreedMetricsRq.asSequence().map { it.id }.toSet()
         val agreedMetricsDbIds = agreedMetricsDb.asSequence().map { it.id }.toSet()
         if (agreedMetricsDbIds.size != agreedMetricsRqIds.size) throw ErrorException(ErrorType.INVALID_METRIC_ID)
         if (!agreedMetricsDbIds.containsAll(agreedMetricsRqIds)) throw ErrorException(ErrorType.INVALID_METRIC_ID)
+
+        val observationRqIds = agreedMetricsRq.asSequence().flatMap { it.observations.asSequence() }.map { it.id }.toSet()
+        val observationDbIds = agreedMetricsDb.asSequence().flatMap { it.observations.asSequence() }.map { it.id }.toSet()
+        if (observationRqIds.size != observationDbIds.size) throw ErrorException(ErrorType.INVALID_OBSERVATION_ID)
+        if (!observationDbIds.containsAll(observationRqIds)) throw ErrorException(ErrorType.INVALID_OBSERVATION_ID)
+
+        //update
         for (agreedMetricRq in agreedMetricsRq) {
             for (agreedMetricDb in agreedMetricsDb) {
                 if (agreedMetricDb.id == agreedMetricRq.id) {
                     for (observationDb in agreedMetricDb.observations) {
                         for (observationRq in agreedMetricRq.observations) {
                             if (observationRq.id == observationDb.id) {
-                                    observationDb.measure = observationRq.measure
+                                observationDb.measure = observationRq.measure
                             }
                         }
                     }
