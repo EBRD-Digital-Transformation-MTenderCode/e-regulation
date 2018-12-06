@@ -30,9 +30,12 @@ class UpdateTermsService(private val termsDao: TermsDao) {
         for (agreedMetricRq in agreedMetricsRq) {
             for (agreedMetricDb in agreedMetricsDb) {
                 if (agreedMetricDb.id == agreedMetricRq.id) {
-                    for (observation in agreedMetricDb.observations) {
-                        val measureRq = agreedMetricRq.observations.asSequence().firstOrNull { it.id == observation.id }?.measure
-                        observation.measure = measureRq
+                    for (observationDb in agreedMetricDb.observations) {
+                        for (observationRq in agreedMetricRq.observations) {
+                            if (observationRq.id == observationDb.id) {
+                                    observationDb.measure = observationRq.measure
+                            }
+                        }
                     }
                 }
             }
