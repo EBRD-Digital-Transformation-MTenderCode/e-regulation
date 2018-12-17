@@ -28,5 +28,5 @@ data class Observation @JsonCreator constructor(
 
         val id: String,
 
-        var measure: Any
+        var measure: String
 )
