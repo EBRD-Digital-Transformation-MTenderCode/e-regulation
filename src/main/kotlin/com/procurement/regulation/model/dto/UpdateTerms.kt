@@ -2,7 +2,9 @@ package com.procurement.regulation.model.dto
 
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonInclude
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize
 import com.procurement.regulation.model.dto.bpe.templates.AgreedMetric
+import com.procurement.regulation.model.dto.databinding.StringsDeserializer
 import java.util.*
 
 data class UpdateTermsRq @JsonCreator constructor(
@@ -28,5 +30,6 @@ data class Observation @JsonCreator constructor(
 
         val id: String,
 
+        @JsonDeserialize(using = StringsDeserializer::class)
         var measure: String
 )
