@@ -7,9 +7,9 @@ import com.procurement.regulation.model.dto.ocds.Contract
 
 data class GetTermsRq @JsonCreator constructor(
 
-        val awards: Set<Award>,
+        val contractedAward:  Award,
 
-        val contracts: Set<Contract>
+        val contract: Contract
 )
 
 data class GetTermsRs @JsonCreator constructor(
