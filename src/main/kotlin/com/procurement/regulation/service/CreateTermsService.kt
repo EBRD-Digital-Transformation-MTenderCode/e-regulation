@@ -29,7 +29,6 @@ class CreateTermsService(private val templateService: TemplateService,
         val award = dto.contractedAward
         val staticTemplates = templateService.getStaticMetrics(country, pmd, language, mainProcurementCategory)
         val dynamicTemplates = templateService.getDynamicMetrics(country, pmd, language, mainProcurementCategory)
-        val contractTerms = mutableSetOf<ContractTerm>()
         val agreedMetrics = LinkedList<AgreedMetric>()
         agreedMetrics.addAll(staticTemplates)
         val items = award.items
@@ -44,7 +43,6 @@ class CreateTermsService(private val templateService: TemplateService,
         }
         val contractTerm = ContractTerm(id = contract.id, agreedMetrics = agreedMetrics)
         termsDao.save(TermsEntity(contract.id, toJson(contractTerm)))
-        contractTerms.add(contractTerm)
-        return ResponseDto(data = GetTermsRs(contractTerms))
+        return ResponseDto(data = GetTermsRs(contractTerm))
     }
 }

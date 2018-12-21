@@ -14,5 +14,5 @@ data class GetTermsRq @JsonCreator constructor(
 
 data class GetTermsRs @JsonCreator constructor(
 
-        val contractTerms: Set<ContractTerm>
+        val contractTerm: ContractTerm
 )
