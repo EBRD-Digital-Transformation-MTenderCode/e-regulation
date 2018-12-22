@@ -26,16 +26,16 @@ class CreateTermsService(private val templateService: TemplateService,
         val mainProcurementCategory = cm.context.mainProcurementCategory ?: throw ErrorException(ErrorType.CONTEXT)
         val dto = toObject(GetTermsRq::class.java, cm.data)
         val contract = dto.contract
-        val award = dto.contractedAward
+        val contractedAward = dto.contractedAward
         val staticTemplates = templateService.getStaticMetrics(country, pmd, language, mainProcurementCategory)
         val dynamicTemplates = templateService.getDynamicMetrics(country, pmd, language, mainProcurementCategory)
         val agreedMetrics = LinkedList<AgreedMetric>()
         agreedMetrics.addAll(staticTemplates)
-        val items = award.items
+        val items = contractedAward.items
         if (items != null && items.isNotEmpty()) {
             for (dynamicTemplate in dynamicTemplates) {
                 for (item in items) {
-                    val id = dynamicTemplate.id + "-" + award.id + "-" + item.id
+                    val id = dynamicTemplate.id + "-" + contractedAward.id + "-" + item.id
                     val title = dynamicTemplate.title + item.description
                     agreedMetrics.add(dynamicTemplate.copy(id = id, title = title))
                 }
