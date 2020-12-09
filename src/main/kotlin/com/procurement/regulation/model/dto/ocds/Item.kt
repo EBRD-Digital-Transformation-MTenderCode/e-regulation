@@ -14,7 +14,7 @@ data class Item @JsonCreator constructor(
 
         val classification: Classification?,
 
-        val additionalClassifications: HashSet<Classification>?,
+        val additionalClassifications: List<Classification>?,
 
         val quantity: BigDecimal?,
 
